@@ -13,13 +13,13 @@ import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class Mobility_Chek extends AppCompatActivity implements SensorEventListener {
+public class MobilityCheck extends AppCompatActivity implements SensorEventListener {
+
     TextView txtDay;
     TextView txtHour;
     Calendar calendar = Calendar.getInstance();
@@ -30,12 +30,12 @@ public class Mobility_Chek extends AppCompatActivity implements SensorEventListe
     Vibrator vibrator;
     private long lastUpdate = 0;
     private float last_x, last_y, last_z;
-    private static final int SHAKE_THRESHOLD = 5000;
+    private static final int SHAKE_THRESHOLD = 4000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mobility__chek);
+        setContentView(R.layout.activity_mobility_check);
 
         context=this;
 
@@ -52,8 +52,9 @@ public class Mobility_Chek extends AppCompatActivity implements SensorEventListe
         sound();
         vibrator = (Vibrator)context.getSystemService(context.VIBRATOR_SERVICE);
         vibrator.vibrate(100000);
-    }
 
+
+    }
 
     @Override
     public void onBackPressed(){

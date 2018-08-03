@@ -6,9 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Main extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     Button btnMedicine_Alert;
     Button btnMobility_Check;
+    Button btnLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,11 +18,12 @@ public class Main extends AppCompatActivity{
 
         btnMedicine_Alert=(Button) findViewById(R.id.btnAlert);
         btnMobility_Check=(Button) findViewById(R.id.btnMobilityCheck);
+        btnLocation=(Button) findViewById(R.id.btnLocation);
 
         btnMedicine_Alert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Main.this,Set_Time.class);
+                Intent intent=new Intent(MainActivity.this,SetTime.class);
                 startActivity(intent);
 
             }
@@ -30,16 +32,17 @@ public class Main extends AppCompatActivity{
         btnMobility_Check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Main.this,Mobility_Chek.class);
+                Intent intent=new Intent(MainActivity.this,MobilityCheck.class);
                 startActivity(intent);
             }
         });
 
-
-
-
+        btnLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this, GeofenceActivity.class);
+                startActivity(intent);
+            }
+        });
     }
-
-
-
 }

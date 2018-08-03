@@ -13,16 +13,14 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class Set_Time extends AppCompatActivity {
-
+public class SetTime extends AppCompatActivity {
     Button btnSetTime;
     TimePicker tpTime;
     Calendar calendar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_set__time);
+        setContentView(R.layout.activity_set_time);
 
         btnSetTime=(Button)findViewById(R.id.btnSetTime);
         tpTime=(TimePicker)findViewById(R.id.tpTime);
@@ -44,15 +42,15 @@ public class Set_Time extends AppCompatActivity {
         });
     }
 
-
     private void setAlarm(long timeInMillis) {
 
         AlarmManager alarmManager=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        Intent intent=new Intent(this,alert.class);
-        PendingIntent pendingIntent=PendingIntent.getBroadcast(this,0,intent,0);
-        alarmManager.setRepeating(AlarmManager.RTC,timeInMillis,
+        Intent intent=new Intent(SetTime.this,AlertBroadcastReceiver.class);
+        PendingIntent pendingIntent=PendingIntent.getBroadcast(SetTime.this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.setRepeating(AlarmManager.RTC,timeInMillis-System.currentTimeMillis(),
                 AlarmManager.INTERVAL_DAY,pendingIntent);
-        Toast.makeText(this,"Alarm sets",Toast.LENGTH_LONG).show();
+        Toast.makeText(SetTime.this,"Alarm sets",Toast.LENGTH_SHORT).show();
 
     }
+
 }

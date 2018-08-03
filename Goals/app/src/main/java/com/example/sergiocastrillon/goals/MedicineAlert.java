@@ -1,26 +1,22 @@
 package com.example.sergiocastrillon.goals;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.os.Vibrator;
 import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class Medicine_Alert extends AppCompatActivity {
+public class MedicineAlert extends AppCompatActivity {
 
     TextView txtDay;
     TextView txtHour;
@@ -34,7 +30,7 @@ public class Medicine_Alert extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_medicine__alert);
+        setContentView(R.layout.activity_medicine_alert);
 
         context=this;
 
@@ -59,25 +55,12 @@ public class Medicine_Alert extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 
     @Override
     public void onBackPressed(){
         Toast.makeText(context,"You Are Not Allowed to Exit the App", Toast.LENGTH_SHORT).show();
     }
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_HOME) {
-            Toast.makeText(context,"You Are Not Allowed to Exit the App", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
-
-
-
 
 
     private String hour (){

@@ -3,6 +3,8 @@
     package="com.example.sergiocastrillon.goals">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -11,29 +13,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Main">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Medicine_Alert"
-            android:label="Medicine Alert">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".SetTime" />
+        <activity android:name=".MedicineAlert" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        <receiver android:name=".AlertBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"/>
 
-        <receiver android:name=".alert" />
+        <activity android:name=".MobilityCheck" />
+        <activity android:name=".GeofenceActivity"></activity>
+        <receiver
+            android:name=".GeofenceBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true" />
 
-        <activity android:name=".Set_Time" />
-        <activity android:name=".Mobility_Chek">
-
-        </activity>
+        <service
+            android:name=".GeofenceTransitionsJobIntentService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
 
 </manifest>
